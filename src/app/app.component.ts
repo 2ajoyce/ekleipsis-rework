@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
+import { DataRepoService } from './data-repo.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+@Injectable()
 export class AppComponent {
-  title = 'app';
+  dataRepoService: DataRepoService;
+  constructor(dataRepoService: DataRepoService) {
+    this.dataRepoService = dataRepoService;
+  }
 }
