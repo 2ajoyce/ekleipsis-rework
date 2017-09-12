@@ -1,5 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { DataRepoService } from './data-repo.service';
+import { AuthenticationService } from './authentication.service';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,13 @@ import { DataRepoService } from './data-repo.service';
 @Injectable()
 export class AppComponent {
   dataRepoService: DataRepoService;
-  constructor(dataRepoService: DataRepoService) {
+  authenticationService: AuthenticationService;
+
+  constructor(
+    dataRepoService: DataRepoService,
+    authenticationService: AuthenticationService,
+  ) {
     this.dataRepoService = dataRepoService;
+    this.authenticationService = authenticationService;
   }
 }

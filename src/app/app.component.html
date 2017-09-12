@@ -1,31 +1,21 @@
 <h2>Database Info</h2>
-<button>Login</button>
-<button>Logout</button>
+<!--<button (click)="authenticationService.login('ajoyce@test.com', 'ajoyce')">Login</button>-->
+<button (click)="authenticationService.openLoginDialog()">Login</button>
+<button (click)="authenticationService.logout()">Logout</button>
 <ul>
   <li>
     <h2>Current User</h2>
+    {{(authenticationService.user | async)?.email}}
   </li>
   <li>
     <h2>All Users</h2>
     <ul>
-      <li
-        *ngFor="let user of (dataRepoService.users | async) | iterateOverObject"
-        style="margin-bottom: 1em"
-      >
-        Name: {{ (dataRepoService.users | async)[user].firstName }} {{ (dataRepoService.users | async)[user].lastName }}
+      <li *ngFor="let user of dataRepoService.userList | async" style="margin-bottom: 1em">
+        Name: {{ user.firstName }} {{ user.lastName }}
         <br>
-        Email: {{ (dataRepoService.users | async)[user].email }}
-      </li>
-    </ul>
-  </li>
-  <li>
-    <h2>Test</h2>
-    <ul>
-      <li *ngFor="let user of dataRepoService.userList | async">
-        key: {{user.$key}}
+        Email: {{ user.email }}
       </li>
     </ul>
   </li>
 </ul>
-    <!--{{ (dataRepoService.users | async)?.ajoyce.email }}-->
 
