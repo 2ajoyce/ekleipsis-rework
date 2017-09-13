@@ -11,10 +11,10 @@ export class LoginComponent implements OnInit {
   authService: AuthenticationService;
 
   constructor(
-    // authService: AuthenticationService,
+    authService: AuthenticationService,
     public dialogRef: MdDialogRef<LoginComponent>
   ) {
-    // this.authService = authService;
+    this.authService = authService;
   }
 
   ngOnInit() {

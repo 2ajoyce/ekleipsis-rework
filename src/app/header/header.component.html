@@ -1,0 +1,4 @@
+<md-toolbar>
+    <button *ngIf="!(authService.user | async)" md-button (click)="openLoginDialog()">Login</button>
+    <button *ngIf="(authService.user | async)" md-button (click)="authService.logout()">Logout</button>
+</md-toolbar>

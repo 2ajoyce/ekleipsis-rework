@@ -1,0 +1,5 @@
+<md-list>
+    <md-card *ngFor="let note of (dataRepoService.getTeamFeedback())">
+      {{note.message}}
+    </md-card>
+</md-list>

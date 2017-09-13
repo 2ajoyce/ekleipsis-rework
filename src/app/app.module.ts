@@ -10,15 +10,22 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { IterateOverObjectPipe } from './iterate-over-object.pipe';
 import { LoginComponent } from './login/login.component';
-import { MdDialogModule, MdInputModule } from '@angular/material';
+import {
+  MdButton, MdButtonModule, MdCardModule, MdDialogModule, MdInputModule, MdListModule, MdMenuModule,
+  MdToolbarModule
+} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './header/header.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IterateOverObjectPipe,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     MdInputModule,
     FormsModule,
-    MdDialogModule
+    MdDialogModule,
+    MdToolbarModule,
+    MdButtonModule,
+    MdListModule,
+    MdCardModule,
   ],
   providers: [
     AuthenticationService,
