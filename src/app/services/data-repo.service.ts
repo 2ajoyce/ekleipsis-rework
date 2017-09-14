@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { TeamFeedback } from './team-feedback';
+import { TeamFeedback } from '../models/team-feedback';
 import { AuthenticationService } from './authentication.service';
 import { async } from 'rxjs/scheduler/async';
 
@@ -19,6 +19,7 @@ export class DataRepoService {
       if (user) {
         this.userDetails = this.db.list('/users/' + user.uid.toString());
         this.teamFeedbackNotes = this.db.list('/teamFeedbackNotes/' + user.uid.toString());
+        // this.teamFeedbackNotes = this.db.list('/teamFeedbackNotes/teamFeedbackNotes/5PhbGyIEXYc8kamEHgrYzOZrWTx1');
       }
     });
   }

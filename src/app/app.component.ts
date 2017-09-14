@@ -1,6 +1,6 @@
 import { Component, Injectable } from '@angular/core';
-import { DataRepoService } from './data-repo.service';
-import { AuthenticationService } from './authentication.service';
+import { DataRepoService } from './services/data-repo.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',

@@ -1,20 +1,26 @@
 <app-header></app-header>
-<app-list></app-list>
-<h2>Database Info</h2>
-<ul>
-  <li>
-    <h2>Current User</h2>
-    {{(authenticationService.user | async)?.email}}
-  </li>
-  <li>
-    <h2>All Users</h2>
-    <ul>
-      <li *ngFor="let user of dataRepoService.userList | async" style="margin-bottom: 1em">
-        Name: {{ user?.firstName }} {{ user?.lastName }}
-        <br>
-        Email: {{ user?.email }}
-      </li>
-    </ul>
-  </li>
-</ul>
+<div class="list-container">
+  <app-list class="list" [title]="'Compliments'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
+  <app-list class="list" [title]="'Notes'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
+  <app-list class="list" [title]="'Goals'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
+</div>
+
+
+<!--<h2>Database Info</h2>-->
+<!--<ul>-->
+  <!--<li>-->
+    <!--<h2>Current User</h2>-->
+    <!--{{(authenticationService.user | async)?.email}}-->
+  <!--</li>-->
+  <!--<li>-->
+    <!--<h2>All Users</h2>-->
+    <!--<ul>-->
+      <!--<li *ngFor="let user of dataRepoService.userList | async" style="margin-bottom: 1em">-->
+        <!--Name: {{ user?.firstName }} {{ user?.lastName }}-->
+        <!--<br>-->
+        <!--Email: {{ user?.email }}-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</li>-->
+<!--</ul>-->
 
