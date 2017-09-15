@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from '../../services/authentication.service';
+import { DataRepoService } from '../../services/data-repo.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public authService: AuthenticationService,
+    public dataRepoService: DataRepoService,
     public dialog: MdDialog
   ) { }
 

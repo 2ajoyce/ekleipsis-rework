@@ -1,0 +1,7 @@
+md-toolbar {
+  display: flex;
+}
+
+md-toolbar button {
+  margin-left: auto;
+}
