@@ -14,17 +14,17 @@ export class DataRepoService {
 
   constructor(public db: AngularFireDatabase,
               public authService: AuthenticationService) {
+    this.userList = this.db.list('/users');
     authService.user.subscribe(user => {
-      this.userList = this.db.list('/users');
-      if (user) {
-        this.db.object('/users/' + user.uid.toString()).subscribe(x => {
-          if (x) {
-            this.userDetails = new UserDetails(x.email, x.firstName, x.lastName);
-          }
-        });
+      const userId = user ? user.uid.toString() : '';
 
-        this.teamFeedbackNotes = this.db.list('/teamFeedbackNotes/' + user.uid.toString());
-      }
+      this.db.object('/users/' + userId).subscribe(x => {
+        if (x) {
+          this.userDetails = new UserDetails(x.email, x.firstName, x.lastName);
+        }
+      });
+
+      this.teamFeedbackNotes = this.db.list('/teamFeedbackNotes/' + userId);
     });
   }
 }
