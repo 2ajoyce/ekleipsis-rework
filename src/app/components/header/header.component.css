@@ -3,5 +3,9 @@ md-toolbar {
 }
 
 md-toolbar button {
+  /*margin-left: auto;*/
+}
+
+md-toolbar button:first-of-type{
   margin-left: auto;
 }

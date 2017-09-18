@@ -8,13 +8,11 @@ import { MdDialogRef } from '@angular/material';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  authService: AuthenticationService;
 
   constructor(
-    authService: AuthenticationService,
+    private authService: AuthenticationService,
     public dialogRef: MdDialogRef<LoginComponent>
   ) {
-    this.authService = authService;
   }
 
   ngOnInit() {

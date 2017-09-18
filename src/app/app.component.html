@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div class="list-container">
-  <app-list class="list" [title]="'Compliments'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
-  <app-list class="list" [title]="'Notes'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
-  <app-list class="list" [title]="'Goals'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
+  <app-list class="list" [category]="'Positive'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
+  <app-list class="list" [category]="'Notes'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
+  <app-list class="list" [category]="'Goals'" [list]="dataRepoService.teamFeedbackNotes"></app-list>
 </div>
 
 

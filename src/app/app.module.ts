@@ -21,13 +21,17 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { ListComponent } from './components/list/list.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CallbackPipe } from './pipes/callback.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    ListComponent
+    ListComponent,
+    RegisterComponent,
+    CallbackPipe
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,10 @@ import { ListComponent } from './components/list/list.component';
     DataRepoService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent]
+  entryComponents: [
+    LoginComponent,
+    RegisterComponent
+  ]
 })
 export class AppModule {
 }

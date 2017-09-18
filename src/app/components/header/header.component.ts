@@ -3,6 +3,7 @@ import { MdDialog } from '@angular/material';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from '../../services/authentication.service';
 import { DataRepoService } from '../../services/data-repo.service';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +12,10 @@ import { DataRepoService } from '../../services/data-repo.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(
-    public authService: AuthenticationService,
-    public dataRepoService: DataRepoService,
-    public dialog: MdDialog
-  ) { }
+  constructor(public authService: AuthenticationService,
+              public dataRepoService: DataRepoService,
+              public dialog: MdDialog) {
+  }
 
   ngOnInit() {
   }
@@ -25,8 +25,18 @@ export class HeaderComponent implements OnInit {
       width: '250px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log('The login dialog was closed');
+    // dialogRef.afterClosed().subscribe(result => {
+    // console.log('The login dialog was closed');
+    // });
+  }
+
+  openRegisterDialog(): void {
+    let dialogRef = this.dialog.open(RegisterComponent, {
+      width: '250px'
     });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The login dialog was closed');
+    // });
   }
 }

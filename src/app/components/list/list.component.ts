@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { TeamFeedback } from '../../models/team-feedback';
 
 @Component({
   selector: 'app-list',
@@ -7,13 +8,18 @@ import { FirebaseListObservable } from 'angularfire2/database';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  @Input() title: string;
+  @Input() category: string;
   @Input() list: FirebaseListObservable<any[]>;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  filterNotes(note: TeamFeedback) {
+    // console.log(note.category.toString(), this.category);
+    return note.category.toString() === this.category;
   }
 
 }

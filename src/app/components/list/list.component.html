@@ -1,6 +1,6 @@
-<h2>{{title}}</h2>
+<h2>{{category}}</h2>
 <md-list>
-    <md-card *ngFor="let item of list | async">
-      {{item.message}}
-    </md-card>
+  <md-card *ngFor="let note of list | async | callback:filterNotes.bind(this)">
+    {{note.message}}
+  </md-card>
 </md-list>

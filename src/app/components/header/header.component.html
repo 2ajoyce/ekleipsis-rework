@@ -1,5 +1,6 @@
 <md-toolbar>
   <h1 class="name">{{dataRepoService.userDetails?.firstName}} {{dataRepoService.userDetails?.lastName}}</h1>
+  <button *ngIf="!(authService.user | async)" md-button (click)="openRegisterDialog()">Register</button>
   <button *ngIf="!(authService.user | async)" md-button (click)="openLoginDialog()">Login</button>
   <button *ngIf="(authService.user | async)" md-button (click)="authService.logout()">Logout</button>
 </md-toolbar>
