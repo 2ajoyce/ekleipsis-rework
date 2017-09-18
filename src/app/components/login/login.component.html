@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value); loginForm.reset();">
   <md-input-container>
     <input mdInput placeholder="Email" type="email" name="email" ngModel>
   </md-input-container>

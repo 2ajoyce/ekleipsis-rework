@@ -22,4 +22,8 @@ export class ListComponent implements OnInit {
     return note.category.toString() === this.category;
   }
 
+  onSubmit(form: any) {
+    console.log(this.category, form.message);
+  }
+
 }
