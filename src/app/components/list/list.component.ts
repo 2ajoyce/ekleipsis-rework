@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
 
   filterNotes(note: TeamFeedback) {
     // console.log(note.category.toString(), this.category);
-    return note.category.toString() === this.category;
+    return note.category ? note.category.toString() === this.category : false;
   }
 
   onSubmit(form: any) {
