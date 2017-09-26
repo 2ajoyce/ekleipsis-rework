@@ -1,0 +1,23 @@
+<form #teamFeedbackForm="ngForm" (ngSubmit)="onSubmit(teamFeedbackForm.value); teamFeedbackForm.reset();">
+  <md-form-field>
+    <input placeholder="User" type="text" name="user" mdInput ngModel [mdAutocomplete]="auto">
+  </md-form-field>
+
+  <md-form-field>
+    <input mdInput placeholder="Category" type="text" name="category" ngModel>
+  </md-form-field>
+
+  <md-form-field>
+    <input mdInput placeholder="Message" type="message" name="message" ngModel>
+  </md-form-field>
+
+  <md-checkbox name="isAnonymous">Anonymous</md-checkbox>
+
+  <button md-button type="submit">Submit</button>
+
+  <md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let teamMember of dataRepoService.teamMembers" [value]="teamMember">
+      {{ teamMember.firstName }} {{ teamMember.lastName}}
+    </md-option>
+  </md-autocomplete>
+</form>

@@ -4,14 +4,14 @@ import { MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  templateUrl: './registration-form.component.html',
+  styleUrls: ['./registration-form.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegistrationFormComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    public dialogRef: MdDialogRef<RegisterComponent>
+    public dialogRef: MdDialogRef<RegistrationFormComponent>
   ) { }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { TeamFeedback } from '../models/team-feedback';
 import { AuthenticationService } from './authentication.service';
 import { async } from 'rxjs/scheduler/async';
@@ -10,6 +10,9 @@ import { UserDetails } from '../models/user-details';
 export class DataRepoService {
   userList: FirebaseListObservable<any[]>;
   teamFeedbackNotes: FirebaseListObservable<any[]>;
+  managers: UserDetails[] = Array<UserDetails>();
+  subordinates: FirebaseListObservable<any[]>;
+  teamMembers: UserDetails[] = Array<UserDetails>();
   userDetails: UserDetails;
 
   constructor(public db: AngularFireDatabase,
@@ -18,13 +21,47 @@ export class DataRepoService {
     authService.user.subscribe(user => {
       const userId = user ? user.uid.toString() : '';
 
-      this.db.object('/users/' + userId).subscribe(x => {
-        if (x) {
-          this.userDetails = new UserDetails(x.email, x.firstName, x.lastName);
-        }
+      this.teamFeedbackNotes = this.getTeamFeedbackNotes(userId);
+      this.subordinates = this.getSubordinates(userId);
+
+      this.getManagers(userId).subscribe(managers => {
+        managers.forEach(manager => {
+          this.getSubordinates(manager.$value).subscribe(subordinates => {
+            subordinates.forEach(subordinate => {
+              this.getUserDetails(subordinate.$value).subscribe(teamMember => {
+                this.teamMembers.push(teamMember);
+              });
+            });
+          });
+        });
       });
 
-      this.teamFeedbackNotes = this.db.list('/teamFeedbackNotes/' + userId);
+      this.getUserDetails(userId).subscribe(userDetails => {
+        this.userDetails = new UserDetails(userDetails.email, userDetails.firstName, userDetails.lastName);
+      });
+
+      // this.db.database.ref('/managers/' + userId).on('value', function (snapshot) {
+      //   snapshot.forEach(function (childSnapshot) {
+      //     this.managers.push(new UserDetails(childSnapshot.val()
+      //     return false;
+      //   });
+      // });
     });
+  }
+
+  public getUserDetails(userId: string): FirebaseObjectObservable<any> {
+    return this.db.object('/users/' + userId);
+  }
+
+  public getSubordinates(userId: string): FirebaseListObservable<any[]> {
+    return this.db.list('/subordinates/' + userId);
+  }
+
+  public getTeamFeedbackNotes(userId: string): FirebaseListObservable<any[]> {
+    return this.db.list('/teamFeedbackNotes/' + userId);
+  }
+
+  public getManagers(userId: string): FirebaseListObservable<any> {
+    return this.db.list('/managers/' + userId);
   }
 }

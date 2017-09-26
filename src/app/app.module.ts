@@ -8,30 +8,33 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { LoginComponent } from './components/login/login.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 import {
   MdButtonModule,
-  MdCardModule,
+  MdCardModule, MdCheckboxModule,
   MdDialogModule,
   MdInputModule,
   MdListModule,
-  MdToolbarModule
+  MdToolbarModule,
+  MdAutocompleteModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { ListComponent } from './components/list/list.component';
-import { RegisterComponent } from './components/register/register.component';
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { CallbackPipe } from './pipes/callback.pipe';
+import { TeamFeedbackFormComponent } from './components/team-feedback-form/team-feedback-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    LoginFormComponent,
     HeaderComponent,
     ListComponent,
-    RegisterComponent,
-    CallbackPipe
+    RegistrationFormComponent,
+    CallbackPipe,
+    TeamFeedbackFormComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,8 @@ import { CallbackPipe } from './pipes/callback.pipe';
     MdButtonModule,
     MdListModule,
     MdCardModule,
+    MdCheckboxModule,
+    MdAutocompleteModule,
   ],
   providers: [
     AuthenticationService,
@@ -53,8 +58,9 @@ import { CallbackPipe } from './pipes/callback.pipe';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    LoginComponent,
-    RegisterComponent
+    LoginFormComponent,
+    RegistrationFormComponent,
+    TeamFeedbackFormComponent
   ]
 })
 export class AppModule {

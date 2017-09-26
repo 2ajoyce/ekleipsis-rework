@@ -1,9 +1,9 @@
 <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value); loginForm.reset();">
-  <md-input-container>
+  <md-form-field>
     <input mdInput placeholder="Email" type="email" name="email" ngModel>
-  </md-input-container>
-  <md-input-container>
+  </md-form-field>
+  <md-form-field>
     <input mdInput placeholder="Password" type="password" name="password" ngModel>
-  </md-input-container>
+  </md-form-field>
   <button md-button type="submit">Login</button>
 </form>

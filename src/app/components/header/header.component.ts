@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
-import { LoginComponent } from '../login/login.component';
+import { LoginFormComponent } from '../login-form/login-form.component';
 import { AuthenticationService } from '../../services/authentication.service';
 import { DataRepoService } from '../../services/data-repo.service';
-import { RegisterComponent } from '../register/register.component';
+import { RegistrationFormComponent } from '../registration-form/registration-form.component';
+import { TeamFeedbackFormComponent } from '../team-feedback-form/team-feedback-form.component';
 
 @Component({
   selector: 'app-header',
@@ -21,22 +22,24 @@ export class HeaderComponent implements OnInit {
   }
 
   openLoginDialog(): void {
-    let dialogRef = this.dialog.open(LoginComponent, {
+    let dialogRef = this.dialog.open(LoginFormComponent, {
       width: '250px'
     });
 
     // dialogRef.afterClosed().subscribe(result => {
-    // console.log('The login dialog was closed');
+    // console.log('The login-form dialog was closed');
     // });
   }
 
   openRegisterDialog(): void {
-    let dialogRef = this.dialog.open(RegisterComponent, {
+    let dialogRef = this.dialog.open(RegistrationFormComponent, {
       width: '250px'
     });
+  }
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The login dialog was closed');
-    // });
+  openTeamFeedbackFormDialog(): void {
+    let dialogRef = this.dialog.open(TeamFeedbackFormComponent, {
+      width: '250px'
+    });
   }
 }

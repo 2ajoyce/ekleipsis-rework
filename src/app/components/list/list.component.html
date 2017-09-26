@@ -1,9 +1,4 @@
 <h2>{{category}}</h2>
-<form #listForm="ngForm" (ngSubmit)="onSubmit(listForm.value); listForm.reset();">
-  <md-input-container>
-    <input mdInput placeholder="Leave some feedback..." type="message" name="message" ngModel>
-  </md-input-container>
-</form>
 <md-list>
   <md-card *ngFor="let note of list | async | callback:filterNotes.bind(this)">
     {{note.message}}

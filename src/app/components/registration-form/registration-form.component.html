@@ -1,12 +1,12 @@
 <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm.value); registerForm.reset();">
-  <md-input-container>
+  <md-form-field>
     <input mdInput placeholder="Email" type="email" name="email" ngModel>
-  </md-input-container>
-  <md-input-container>
+  </md-form-field>
+  <md-form-field>
     <input mdInput placeholder="Password" type="password" name="password" ngModel>
-  </md-input-container>
-  <md-input-container>
+  </md-form-field>
+  <md-form-field>
     <input mdInput placeholder="Re-type password" type="password" name="passwordVerify" ngModel>
-  </md-input-container>
+  </md-form-field>
   <button md-button type="submit">Register</button>
 </form>
