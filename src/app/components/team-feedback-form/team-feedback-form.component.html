@@ -8,14 +8,14 @@
   </md-form-field>
 
   <md-form-field>
-    <input mdInput placeholder="Message" type="message" name="message" ngModel>
+    <input mdInput placeholder="Message" type="message" name="message" autofocus ngModel>
   </md-form-field>
 
   <md-checkbox name="isAnonymous">Anonymous</md-checkbox>
 
   <button md-button type="submit">Submit</button>
 
-  <md-autocomplete #auto="mdAutocomplete">
+  <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayName">
     <md-option *ngFor="let teamMember of dataRepoService.teamMembers" [value]="teamMember">
       {{ teamMember.firstName }} {{ teamMember.lastName}}
     </md-option>

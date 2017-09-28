@@ -37,15 +37,8 @@ export class DataRepoService {
       });
 
       this.getUserDetails(userId).subscribe(userDetails => {
-        this.userDetails = new UserDetails(userDetails.email, userDetails.firstName, userDetails.lastName);
+        this.userDetails = new UserDetails(userDetails.$key, userDetails.email, userDetails.firstName, userDetails.lastName);
       });
-
-      // this.db.database.ref('/managers/' + userId).on('value', function (snapshot) {
-      //   snapshot.forEach(function (childSnapshot) {
-      //     this.managers.push(new UserDetails(childSnapshot.val()
-      //     return false;
-      //   });
-      // });
     });
   }
 
